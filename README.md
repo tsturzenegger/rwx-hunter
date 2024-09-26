@@ -19,7 +19,7 @@ Inspired by: <https://www.ired.team/offensive-security/defense-evasion/finding-a
 ## Example
 
 ```rust
-let mut hunter = RWXhunter::new(vec![0], vec![0], vec![12, 3, 250, 8, 3].into());
+let mut hunter = RWXhunter::new(vec![0], vec![0], vec![12, 3, 250, 8, 3].into(), API::Native);
 while hunter.find_next_candidate().is_ok() {
     if hunter.inject().is_ok() {
         return Ok(());
